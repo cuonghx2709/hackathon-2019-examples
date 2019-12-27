@@ -13,6 +13,11 @@
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
     <!--  -->
+
+    <!-- Import photon library and photon css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.photon@0.8.0/leaflet.photon.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.photon@0.8.0/leaflet.photon.min.js"></script>
+
     <title>Raster View</title>
 
     <!-- Set style for map -->
@@ -37,12 +42,27 @@
     // API raster tiles of wemap
     var api = 'https://apis.wemap.asia/raster-tiles/styles/osm-bright/{z}/{x}/{y}@2x.png?key=ZpIVSmYKNucNvxlHgRFRVBuj'
     //starting position [lat, lon] , zoom int
-    var map = L.map('mapid').setView([21.0382399, 105.7827015], 16);
+    var map = L.map('mapid').setView([21.0382399, 105.7827015], 16)
 
     L.tileLayer(api, {
         attribution: 'Map data &copy; <a href="https://wemap.asia/">WeMap</a>',
         maxZoom: 18,
-    }).addTo(map);
+    }).addTo(map)
+
+    //API Search of wemap
+    apiSearch = "https://apis.wemap.asia/geocode-3/api?key=ZpIVSmYKNucNvxlHgRFRVBuj&location_bias_scale=2&limit=15&"
+
+    //Add photon search in map
+    L.control.photon({
+        url: apiSearch,
+        resultsHandler: myHandler,
+        placeholder: 'Search Here …',
+        position: 'topleft'
+    }).addTo(map)
+
+    function myHandler(geojson) {
+        console.log(geojson);
+    };
 
     ///**** YOUR CODE HERE ****///
 </script>
