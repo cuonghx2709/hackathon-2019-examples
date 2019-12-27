@@ -51,9 +51,13 @@ https://apis.wemap.asia/geocode-3/api?key=ZpIVSmYKNucNvxlHgRFRVBuj&q=cau%20giay&
 ```
 
 ### Reverse geocode a coordinate
+API Reverse
 ```
-https://apis.wemap.asia/we-tools/reverse?key=ZpIVSmYKNucNvxlHgRFRVBuj&lat=$lon=21.5&lat=105.5
+https://apis.wemap.asia/we-tools/reverse?key=ZpIVSmYKNucNvxlHgRFRVBuj
 ```
+
+Example: ```https://apis.wemap.asia/we-tools/reverse?key=ZpIVSmYKNucNvxlHgRFRVBuj&lat=21.5&lon=105.5```
+
 
 ### Adapt Number of Results
 ```

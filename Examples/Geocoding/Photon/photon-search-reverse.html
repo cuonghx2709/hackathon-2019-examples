@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
     <!-- Import leaflet library and leaflet css -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -17,6 +21,11 @@
     <!-- Import photon library and photon css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.photon@0.8.0/leaflet.photon.css">
     <script src="https://cdn.jsdelivr.net/npm/leaflet.photon@0.8.0/leaflet.photon.min.js"></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@2.3.2/dist/esri-leaflet.js"
+        integrity="sha512-6LVib9wGnqVKIClCduEwsCub7iauLXpwrd5njR2J507m3A2a4HXJDLMiSZzjcksag3UluIfuW1KzuWVI5n/cuQ=="
+        crossorigin=""></script>
 
     <title>Raster View</title>
 
@@ -39,17 +48,17 @@
 </body>
 
 <script>
-    // API raster tiles of wemap
+    // API raster tiles of WeMap
     var api = 'https://apis.wemap.asia/raster-tiles/styles/osm-bright/{z}/{x}/{y}@2x.png?key=ZpIVSmYKNucNvxlHgRFRVBuj'
     //starting position [lat, lon] , zoom int
     var map = L.map('mapid').setView([21.0382399, 105.7827015], 16)
 
     L.tileLayer(api, {
         attribution: 'Map data &copy; <a href="https://wemap.asia/">WeMap</a>',
-        maxZoom: 18,
+        maxZoom: 20,
     }).addTo(map)
 
-    //API Search of wemap
+    //API Search of WeMap
     apiSearch = "https://apis.wemap.asia/geocode-3/api?key=ZpIVSmYKNucNvxlHgRFRVBuj&location_bias_scale=2&limit=15&"
 
     //Add photon search in map
@@ -63,6 +72,28 @@
     function myHandler(geojson) {
         console.log(geojson);
     };
+
+    //API Reverse of WeMap
+    var apiReverse = "https://apis.wemap.asia/we-tools/reverse?key=ZpIVSmYKNucNvxlHgRFRVBuj&"
+
+    //Add event click on map an call API Reverse
+    map.on('click', function (point) {
+        var popLocation = point.latlng;
+        $.ajax({
+            url: `${apiReverse}lat=${popLocation.lat}&lon=${popLocation.lng}`,
+            type: 'GET',
+            dataType: 'json',
+        }).done(function (ketqua) {
+            console.log(ketqua)
+            var popup = L.popup()
+                .setLatLng(popLocation)
+                .setContent(`<p>${ketqua['features'][0]['properties']['name']}<br />
+                                ${popLocation.lat.toFixed(3)}, ${popLocation.lng.toFixed(3)}</p>`)
+                .openOn(map);
+            $(this).addClass("done");
+        });
+
+    });
 
     ///**** YOUR CODE HERE ****///
 </script>
