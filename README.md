@@ -1,4 +1,4 @@
-# hackathon-2019-examples 
+# Hackathon 2019 Examples
 Phát triển ứng dụng dựa trên nền tảng Bản đồ số Việt Nam WeMap
 
 Bắt đầu
@@ -23,6 +23,6 @@ https://apis.wemap.asia/raster-tiles/styles/osm-bright/{z}/{x}/{y}@2x.png?key=Zp
 https://apis.wemap.asia/vector-tiles/styles/osm-bright/style.json?key=ZpIVSmYKNucNvxlHgRFRVBuj
 ```
 
-### Thư viện cần dùng để hiển thị wemap-vector: Mapbox-gl-js
+### Thư viện cần dùng để hiển thị wemap-vector:
 [Mapbox-gl-js](https://docs.mapbox.com/mapbox-gl-js/api/)
 
