@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Vector View</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <!-- Import mapbox library and mapbox css -->
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
+    <!--  -->
+
+    <script
+        src="mapbox-directions.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css"
+        type="text/css" />
+
+    <!-- Set style for map -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+</body>
+
+<script>
+    // API stylesheet location of wemap
+    var api = 'https://apis.wemap.asia/vector-tiles/styles/osm-bright/style.json?key=ZpIVSmYKNucNvxlHgRFRVBuj';
+
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: api, // stylesheet location
+        center: [105.7827015, 21.0382399],  // starting position [lon, lat]
+        zoom: 16 // starting zoom
+    });
+
+    map.addControl(
+        new MapboxDirections({
+            api: 'https://apis.wemap.asia/direction-api/route/v1/',
+            profile: 'driving',
+            alternatives: false,
+            congestion: false,
+            unit: 'imperial',
+            flyTo: true,
+            placeholderOrigin: 'Chọn địa điểm bắt đầu',
+            placeholderDestination: 'Chọn điểm đến',
+            zoom: 16,
+            language: 'vi-VN',
+            compile: null,
+            proximity: false,
+            styles: [],
+        }),
+        'top-left'
+    );
+
+    ///**** YOUR CODE HERE ****///
+</script>
+
+</html>
