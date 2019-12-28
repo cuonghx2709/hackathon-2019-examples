@@ -10,8 +10,10 @@
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
     <!--  -->
 
+    <!-- Import pelias library and pelias css -->
     <script src="pelias-geocoder.js"></script>
     <link rel="stylesheet" href="pelias-geocoder.css" type="text/css" />
+    <!--  -->
 
     <!-- Set style for map -->
     <style>
@@ -42,7 +44,11 @@
         zoom: 16 // starting zoom
     });
 
-
+    /*  
+        Tìm kiếm với API của WeMap theo PeliasGeocoder
+        with key = ZpIVSmYKNucNvxlHgRFRVBuj
+        url = https://apis.wemap.asia/geocode-1
+    */
     map.addControl(new PeliasGeocoder({
         params: { 'key': 'ZpIVSmYKNucNvxlHgRFRVBuj' },
         url: 'https://apis.wemap.asia/geocode-1',
@@ -56,10 +62,6 @@
         customAttribution: 'Powered by <a style="color: rgb(0, 148, 255); text-decoration: none;" href="https://wemap.asia/" title="Attributions" target="_blank" style=""><img style="max-height: 1em;" src="https://wemap.asia/assets/images/favicon.png"/><b>WEMAP</b></a>'
     }));
 
-
-    var iconMarkerEl = document.createElement("div");
-    iconMarkerEl.innerHTML = "<div class='marker-arrow'></div>" +
-        "<div class='marker-pulse'></div>";
     ///**** YOUR CODE HERE ****///
 </script>
 
