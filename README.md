@@ -28,6 +28,6 @@ https://apis.wemap.asia/vector-tiles/styles/osm-bright/style.json?key=ZpIVSmYKNu
 
 # Geocoding
 
-## [Photon](./Examples/Geocoding/Photon/photon.md)
+## [Photon](./Examples/Geocoding/Photon/README.md)
 
-## [Pelias](./Examples/Geocoding/Pelias/pelias.md)
+## [Pelias](./Examples/Geocoding/Pelias/README.md)
