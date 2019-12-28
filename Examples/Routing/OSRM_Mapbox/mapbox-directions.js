@@ -8059,8 +8059,8 @@
     
     var initialState = {
       // Options set on initialization
-      api: 'https://routing.openstreetmap.de/',
-      profile: 'routed-car/route/v1/driving',
+      api: 'https://apis.wemap.asia/direction-api/route/v1/',
+      profile: 'driving',
       alternatives: false,
       congestion: false,
       unit: 'imperial',
