@@ -6224,7 +6224,7 @@
         options.push('steps=true');
         
         // if (language) options.push('language=' + language);
-        // if (accessToken) options.push('access_token=' + accessToken);
+        if (accessToken) options.push('key=' + accessToken);
         request.abort();
         request.open('GET', '' + api + profile + '/' + query + '?' + options.join('&'), true);
     
@@ -6701,7 +6701,7 @@
           });
     
           var accessToken = this.options.accessToken ? this.options.accessToken : mapboxgl.accessToken;
-          options.push('access_token=' + accessToken);
+          options.push('key=' + accessToken);
           this.request.abort();
           this.request.open('GET', this.api + encodeURIComponent(q.trim()) + '.json?' + options.join('&'), true);
           this.request.onload = function () {

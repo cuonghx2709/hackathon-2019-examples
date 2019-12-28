@@ -10,8 +10,7 @@
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
     <!--  -->
 
-    <script
-        src="mapbox-directions.js"></script>
+    <script src="mapbox-directions.js"></script>
     <link rel="stylesheet"
         href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css"
         type="text/css" />
@@ -47,6 +46,7 @@
 
     map.addControl(
         new MapboxDirections({
+            accessToken: 'ZpIVSmYKNucNvxlHgRFRVBuj',
             api: 'https://apis.wemap.asia/direction-api/route/v1/',
             profile: 'driving',
             alternatives: false,
@@ -59,9 +59,13 @@
             language: 'vi-VN',
             compile: null,
             proximity: false,
+            geocoder: {
+                // api: 'https://apis.wemap.asia/geocode-1/search?key=ZpIVSmYKNucNvxlHgRFRVBuj&'
+            },
             styles: [],
         }),
-        'top-left'
+        'top-left',
+
     );
 
     ///**** YOUR CODE HERE ****///
